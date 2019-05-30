@@ -6,13 +6,13 @@
 /*   By: mobouzar <mobouzar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 00:39:23 by mobouzar          #+#    #+#             */
-/*   Updated: 2019/05/25 21:54:04 by mobouzar         ###   ########.fr       */
+/*   Updated: 2019/05/29 21:52:00 by mobouzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int	read_file(int fd, t_tetrimino *tetri)
+static int	read_file(int fd, t_tetrimino *t)
 {
 	char	buff[22];
 	char	*temp;
@@ -22,8 +22,8 @@ static int	read_file(int fd, t_tetrimino *tetri)
 
 	i = -1;
 	count = 0;
-	if ((rd = read(fd, buff, 21)) != 21)
-		buff[rd] = '\0';
+	rd = read(fd, buff, 21);
+	buff[rd] = '\0';
 	while (buff[++i])
 		if (buff[i] == '\n')
 			count++;
@@ -31,11 +31,11 @@ static int	read_file(int fd, t_tetrimino *tetri)
 	while (i < 4 && ((rd == 20 && count == 4) || (rd == 21 && count == 5)))
 	{
 		temp = ft_strsub(buff, i * 5, 4);
-		ft_strcpy(tetri->tetrimino[i], temp);
+		ft_strcpy(t->tetrimino[i], temp);
 		ft_strdel(&temp);
 		i++;
 	}
-	if (rd == 0)
+	if (rd == 20 && count == 4)
 		return (-1);
 	return ((rd == 21 || rd == 20) ? 1 : 0);
 }
@@ -95,12 +95,13 @@ static int	is_tetrimino_valid(char tetrimino[4][5])
 int			get_tetriminos(int fd, t_tetriminos *t)
 {
 	int check;
+	int	error;
 
 	t->nbt = 0;
-	while ((check = read_file(fd, &t->tetriminos[t->nbt])))
+	error = 0;
+	while ((check = read_file(fd, &t->tetriminos[t->nbt])) && t->nbt < 26)
 	{
-		if (check == -1)
-			return (1);
+		error += check;
 		if (is_tetrimino_valid(t->tetriminos[t->nbt].tetrimino))
 		{
 			drag_tetrimino(&t->tetriminos[t->nbt]);
@@ -108,8 +109,10 @@ int			get_tetriminos(int fd, t_tetriminos *t)
 		}
 		else
 			return (0);
+		if (check == -1)
+			return (1);
 	}
-	if (check == 0)
+	if (check == 0 || (check == -1 && error == 26))
 		return (0);
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mobouzar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mobouzar <mobouzar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 19:39:51 by mobouzar          #+#    #+#             */
-/*   Updated: 2019/04/17 10:58:04 by mobouzar         ###   ########.fr       */
+/*   Updated: 2019/05/28 23:06:28 by mobouzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ int					ft_getcharindex(char *str, char c);
 void				ft_lstdisplcont(t_list *lst);
 void				ft_lstendadd(t_list *alst, t_list *new);
 int					ft_lstsupp(t_list *lst);
+int					ft_sqrt(int nb);
 
 #endif
