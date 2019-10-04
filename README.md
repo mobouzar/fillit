@@ -29,7 +29,7 @@ Run `make`, an executable called `fillit` should compile directly. Please submit
 Example :
 
 ```
-~ ./fillit samples/test_8
+./fillit samples/test_8
 
 .AABB..
 AACCB..
