@@ -6,7 +6,7 @@
 /*   By: mydevice <mydevice@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 21:38:40 by mobouzar          #+#    #+#             */
-/*   Updated: 2019/10/04 12:04:04 by mydevice         ###   ########.fr       */
+/*   Updated: 2019/10/04 13:25:15 by mydevice         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ int		solve(t_tetriminos *t, int nbt)
 		p.y = -1;
 		while (++p.y < t->len)
 		{
+			system("clear");
+			display(*t);
+			usleep(100);
 			if (set_tetrimino(&(*t), nbt, p))
 			{
 				if (solve(t, nbt + 1))
@@ -85,7 +88,6 @@ int		main(int argc, char const *argv[])
 		}
 		else
 			ft_putendl("error");
-		display(t);
 	}
 	else
 		ft_putendl("usage: ./fillit target_file");
