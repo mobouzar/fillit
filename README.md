@@ -10,3 +10,9 @@ A Tetrimino block is a shape made up of 4 consecutive characters. You’ve proba
 
 ![Drag Racing](https://miro.medium.com/max/1000/0*gJcuJXLaaJGUp2aT.)
 
+# The Goal
+
+The goal of the puzzle is to find the smallest possible square board that the tetrominoes can fit in. Below is an examples of input and the desired solutions:
+
+![Drag Racing](https://miro.medium.com/max/1600/0*Vivh_fpoMHhmqesp.)
+
