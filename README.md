@@ -1,6 +1,6 @@
 # fillit
 
-It’s nearing the end of my first month at 1337, where I am working towards becoming a software developer. For our first algorithms project, we were tasked with the problem:
+It’s nearing the end of my second month at 1337, where I am working towards becoming a software developer. For our first algorithms project, we were tasked with the problem:
 
 Given a set of Tetrominoes, find a way to assemble them in the smallest possible square.
 
